@@ -16,14 +16,6 @@ const style = {
         
 }
 
-const inline = {
-
-    width: '80%',
-    marginLeft: 'auto',
-    marginRight: 'auto'
-
-
-}
 
 export default class Signin extends React.Component{
     constructor(props){
@@ -92,6 +84,9 @@ export default class Signin extends React.Component{
                 type: 'user'
 
             })
+
+            this.props.history.push('/user');
+
         }).catch(function(error) {
             alert(error.message)
         });

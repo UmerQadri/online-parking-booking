@@ -3,7 +3,6 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
-import IconButton from 'material-ui/IconButton';
 import * as firebase from 'firebase';
 import {BrowserRouter as Router,
         Route,
@@ -107,10 +106,8 @@ handleClose = () => this.setState({open: false});
                     zDepth={1}
                     title="Car Parking Booking"
                     titleStyle={{cursor:'pointer'}}
-                    iconElementLeft={this.state.logged ? <img
-                    style={{cursor:'pointer'}} 
-                    src={require('../images/menu.png')} 
-                    onClick={this.handleToggle}/> : <span></span> }
+                    showMenuIconButton={this.state.logged}
+                    onLeftIconButtonTouchTap={this.handleToggle}
                 
                     iconElementRight={this.state.logged ? <Logged /> : <UnLogged />}
                 />
@@ -126,15 +123,21 @@ handleClose = () => this.setState({open: false});
 
                {this.state.type === 'user' ?
                <div>
-                <MenuItem onClick={this.handleClose.bind(this)}>Locations</MenuItem>
-                <MenuItem onClick={this.handleClose.bind(this)}>Bookings</MenuItem>
-                <MenuItem onClick={this.handleClose.bind(this)}>Give Feedback</MenuItem>
+                <MenuItem onTouchTap={this.handleClose.bind(this)}>Locations</MenuItem>
+                <MenuItem onTouchTap={this.handleClose.bind(this)}>Bookings</MenuItem>
+                <MenuItem onTouchTap={this.handleClose.bind(this)}>Give Feedback</MenuItem>
                 </div> :
                 <div>
-                <MenuItem onClick={this.handleClose.bind(this)}>Add Locations</MenuItem>
-                <MenuItem onClick={this.handleClose.bind(this)}>View Bookings</MenuItem>
-                <MenuItem onClick={this.handleClose.bind(this)}>View Users</MenuItem>
-                <MenuItem onClick={this.handleClose.bind(this)}>Users Feedback</MenuItem>
+                <MenuItem onTouchTap={this.handleClose.bind(this)}>
+                <Link to="/locationAdmin">Locations</Link>
+                </MenuItem>
+                <MenuItem onTouchTap={this.handleClose.bind(this)}>
+                <Link to="/viewBooking">View Bookings</Link>
+                </MenuItem>
+                <MenuItem onTouchTap={this.handleClose.bind(this)}>
+                <Link to="/viewUsers">View Users</Link>
+                </MenuItem>
+                <MenuItem onTouchTap={this.handleClose.bind(this)}>Users Feedback</MenuItem>
                 </div>}
                 
             </Drawer>

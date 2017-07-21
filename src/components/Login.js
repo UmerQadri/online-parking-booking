@@ -101,8 +101,7 @@ export default class Login extends React.Component{
             <div>
                 
                     <ValidatorForm onSubmit={this.handleSubmit} 
-                    style={style}
-                    className="login">
+                    style={style}>
                         <TextValidator
                             value={this.state.email}
                             onChange={this.handleChange}
