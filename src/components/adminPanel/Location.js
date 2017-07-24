@@ -5,7 +5,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import * as firebase from 'firebase';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import {BrowserRouter as Router,
         Route,
         Link, withRouter} from 'react-router-dom';
@@ -90,21 +89,22 @@ class AddLocation extends Component{
 
         e.preventDefault();
 
-            let slots = [];
+            let slot = [];
 
             for(var i = 1; i <= this.state.slot; i++){
 
-                slots.push({
+                slot.push({
                     slotName : "Slot " + i,
                     book: "not booked"
                 });
-                console.log(slots[i-1].slotName);
+                console.log(slot[i-1].slotName);
             }
 
             firebase.database().ref().child('locations').push().set({
 
                 locationName: this.state.locationName,
-                slotNumber: slots
+                slotsNumber: this.state.slot,
+                slots: slot
 
                 
 
@@ -220,13 +220,13 @@ class AvailableLocation extends Component{
 
                 <Paper zDepth={1} style={paperStyle} key={i++}>
                 <p>Location Name: {this.state.locations[key].locationName}</p>
-                <p>Slots: {this.state.locations[key].slot}</p>
+                <p>Slots: {this.state.locations[key].slotsNumber}</p>
                 <RaisedButton label="Delete" secondary={true} onTouchTap={this.handleRemove.bind(this, key)}/>
                 <Link 
     to={{ 
     pathname: '/viewLocations', 
     state: { message: key } 
-  }}><RaisedButton label="View" secondary={true} onTouchTap={this.handleView.bind(this, key)}/></Link>
+  }}><RaisedButton label="View" secondary={true}/></Link>
                 </Paper>
 
             )
@@ -250,13 +250,6 @@ class AvailableLocation extends Component{
 
 }
 
-class ViewLocation extends Component{
-
-
-
-
-
-}
 
 class Location extends Component{
 
@@ -266,8 +259,9 @@ class Location extends Component{
 
             <Tabs>
 
-                <Tab label="Available Locations"><AvailableLocation/></Tab>
                 <Tab label="Add Locations"><AddLocation/></Tab>
+                <Tab label="Available Locations"><AvailableLocation/></Tab>
+                
 
             </Tabs>
 

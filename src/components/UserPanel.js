@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Locations from './userPanel/Locations'
 import {BrowserRouter as Router,
         Route,
         Link, withRouter} from 'react-router-dom';
@@ -11,7 +12,11 @@ render(){
 
     return(
         
-        <div>Hello</div>
+        <Router>
+
+
+
+        </Router>
         
 
     );

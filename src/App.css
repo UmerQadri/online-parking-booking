@@ -30,8 +30,43 @@
 
 }
 
-.menuImage {
+.slotButton{
+
+  margin: 5px;
+  background-color: #ff4081;
+  border: 0px;
+  padding: 15px 30px;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
 
 
+}
+
+.slotButton:hover{
   
+  background-color: #efe3e7;
+
+
+}
+
+.slotButtonBooked{
+
+  margin: 5px;
+  background-color: #ffd600;
+  border: 0px;
+  padding: 15px 30px;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+
+
+}
+
+.slotsContainer{
+
+  width: 70%;
+  margin: 5px auto;
+
+
 }

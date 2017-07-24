@@ -10,6 +10,9 @@ import Location from './components/adminPanel/Location';
 import ViewBooking from './components/adminPanel/ViewBooking';
 import ViewUser from './components/adminPanel/ViewUser';
 import ViewLocations from './components/adminPanel/ViewLocations';
+import Locations from './components/userPanel/Locations';
+import ViewLocation from './components/userPanel/ViewLocation';
+import BookSlot from './components/userPanel/BookSlot';
 import {BrowserRouter as Router,
         Route,
         Link, withRouter} from 'react-router-dom';
@@ -36,6 +39,9 @@ class App extends Component {
                             <Route path="/viewBooking" component={ViewBooking} />
                             <Route path="/viewUsers" component={ViewUser} />
                             <Route path="/viewLocations" component={ViewLocations} />
+                            <Route path="/locations" component={Locations} />
+                            <Route path="/viewLocation" component={ViewLocation}/>
+                            <Route path="/bookslot" component={BookSlot} />
                         </div>
                     </MuiThemeProvider>
                 </Router>

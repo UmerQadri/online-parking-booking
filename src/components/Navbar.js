@@ -123,7 +123,9 @@ handleClose = () => this.setState({open: false});
 
                {this.state.type === 'user' ?
                <div>
-                <MenuItem onTouchTap={this.handleClose.bind(this)}>Locations</MenuItem>
+                <MenuItem onTouchTap={this.handleClose.bind(this)}>
+                <Link to="/locations">Locations</Link>
+                </MenuItem>
                 <MenuItem onTouchTap={this.handleClose.bind(this)}>Bookings</MenuItem>
                 <MenuItem onTouchTap={this.handleClose.bind(this)}>Give Feedback</MenuItem>
                 </div> :

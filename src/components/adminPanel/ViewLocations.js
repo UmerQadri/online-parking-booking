@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import * as firebase from 'firebase';
-import RaisedButton from 'material-ui/RaisedButton';
-import {BrowserRouter as Router,
-        Route,
-        Link, withRouter} from 'react-router-dom';
+import Paper from 'material-ui/Paper';
 
+
+
+const paperStyle = {
+
+
+    width: '60%',
+    height: '150px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: '50px',
+    padding: '10px'
+
+
+}
 class ViewLocations extends Component{
 
 
@@ -15,22 +26,22 @@ class ViewLocations extends Component{
 
         this.state = {
 
-            slotNumber: ''
+            slots: ''
 
         }
 
     }
 
-    componentDidMount(){
+    componentWillMount(){
 
-        firebase.database().ref('locations/' + this.props.location.state.message).child('slotNumber').on('value', snap => {
+        firebase.database().ref('locations/' + this.props.location.state.message).child('slots').on('value', snap => {
 
             this.setState({
 
-                slotNumber: snap.val()
+                slots: snap.val()
 
             });
- console.log(this.state.slotNumber);
+ console.log(this.state.slots);
         });
 
         
@@ -39,10 +50,11 @@ class ViewLocations extends Component{
 
     render() {
 
-       const slotNumber = Object.keys(this.state.slotNumber).map((key, i) => {
+       const slots = Object.keys(this.state.slots).map((key, i) => {
 return(
     
-        <RaisedButton label={this.state.slotNumber[key].slotName} secondary={true}/>
+        <button className="slotButton"
+        >{this.state.slots[key].slotName}</button>
         
 );
 
@@ -50,9 +62,13 @@ return(
 
         return(
             
-            <div>
-                {slotNumber}
-            </div>
+            
+                <Paper zDepth={1} style={paperStyle}>
+                    <div className="slotsContainer">
+                {slots}
+                    </div>
+                </Paper>
+            
 
 
         );

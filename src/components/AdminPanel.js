@@ -14,7 +14,7 @@ render(){
         
         <Router>
 
-            <Route path='/' component={Location}/>
+           
 
         </Router>
         
